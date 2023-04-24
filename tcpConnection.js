@@ -20,10 +20,8 @@ server.listen(3000, 'localhost', () => {
     console.log(chalk.yellow('Server listening on localhost:3000'));
 })
 
-
-//port: port, host: ipAddress
 function connectClient(port, ipAddress){
-    client.connect({ port: 3000, host: 'localhost' }, () => {
+    client.connect({ port: port, host: ipAddress }, () => {
         console.log(chalk.green('Client: connected to server!'));
     });
 
@@ -46,7 +44,6 @@ function connectClient(port, ipAddress){
         console.log(chalk.redBright('TCP Connection closed'));
     });
 }
-
 
 connectClient(port, ipAddress);
 

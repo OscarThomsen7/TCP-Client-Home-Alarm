@@ -25,7 +25,6 @@ app.get('/', (req, res) => {
     const $ = cheerio.load(data);
     const paragraph = $('#state-output-text');
 
-
     for (const [index, state] of alarmStates.entries()) {
       if (alarmState ===  index + 1) {
         paragraph.text(state);
@@ -35,26 +34,7 @@ app.get('/', (req, res) => {
     res.setHeader('Content-Type', 'text/html');
     res.send($.html());
   });
-  
-  //res.sendFile(__dirname + '/index.html');
 });
-
-
-app.get("/getState", (req, res) => {
-  let newText;
-  for (const [index, state] of alarmStates.entries()) {
-    if (alarmState ===  index) {//index + 1
-        newText = state;
-    }
-  }
-  const updatedHtml = `<p id="myParagraph">${newText}</p>`;
-  console.log(updatedHtml);
-  res.setHeader('Content-Type', 'text/html');
-  res.send(updatedHtml);
-
-});
-
-
 
 app.get('/style.css', function(req, res) {
   res.setHeader('Content-Type', 'text/css');
@@ -77,7 +57,3 @@ app.post('/', (req, res) => {
 });
 
 app.listen(port, () => {console.log(`App: Listening on port: ${port}`)});
-
-//ändra data och url till env variables istället.
-
-
