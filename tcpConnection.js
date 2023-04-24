@@ -37,7 +37,7 @@ connectClient(port, ipAddress);
 
 export function sendData(data){
     if(client.readyState !== 'open'){
-        client.connect(3000, 'localhost', () => {
+        client.connect(port, ipAddress, () => {
             console.log(chalk.green('Client: Connected to server again'));
         });
     }
