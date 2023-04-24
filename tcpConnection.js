@@ -8,18 +8,6 @@ export const port = process.env.PORT;
 const ipAddress = process.env.IP;
 export let alarmState = 0;
 
-const server = net.createServer((socket) => {
-    socket.on('data', (data) => {
-        console.log(chalk.magenta('Client --> Server:', data.toString()));
-        socket.write(data.toString());
-    });
-
-});
-
-server.listen(3000, 'localhost', () => {
-    console.log(chalk.yellow('Server listening on localhost:3000'));
-})
-
 function connectClient(port, ipAddress){
     client.connect({ port: port, host: ipAddress }, () => {
         console.log(chalk.green('Client: connected to server!'));
