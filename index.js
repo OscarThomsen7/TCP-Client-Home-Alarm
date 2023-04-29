@@ -1,12 +1,19 @@
 const activate = document.getElementById('activate');
 const deactivate = document.getElementById('deactivate');
+const refresh = document.getElementById('refresh');
+
+refresh.addEventListener('click', () => {
+    location.reload();
+})
 
 activate.addEventListener('click', () => {
     sendPostRequest("1");
+    location.reload();
 });
 
 deactivate.addEventListener('click', () => {
     sendPostRequest("0");
+    location.reload();
 });
 
 async function sendPostRequest(value){
